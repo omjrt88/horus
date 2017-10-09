@@ -33,7 +33,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 * git clone git@github.com:omjrt88/horus.git
 * cd horus
-* heroku create horus --buildpack https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+* heroku create {{name of the app (set any name)}} --buildpack https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
 * git push heroku master
 * heroku open
 

@@ -19,7 +19,7 @@ export default Service.extend({
   },
 
   login(username, password) {
-    let isLogged = this.hasUserCreated(username) && this.passwordCorrect(password);
+    let isLogged = this.hasUserCreated(username) && this.passwordCorrect(username, password);
     if (isLogged) {
       this.cookie.setCookie('horusCookieUser', username, { expires: 1, path: '/' });
     }
@@ -47,8 +47,9 @@ export default Service.extend({
     this.get('horusStorage').addObject(data);
   },
 
-  passwordCorrect(password) {
-    return password === this.get('passwordDefault');
+  passwordCorrect(username, password) {
+    return password === this.hasUserCreated(username).userData.password ||
+    password === this.get('passwordDefault');
   },
 
   saveReport(report) {
