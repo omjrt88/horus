@@ -1,0 +1,28 @@
+<div class="panel-heading"><h4>{{humanize (or socialNetwork.type socialNetwork.domain)}}</h4></div>
+<div class="panel-body">
+  <div class="well well-sm notMarginBottom">
+    <div class="media">
+      <a class="thumbnail min-left" href="#">
+        {{#if notImage}}
+          <img class="media-object imgFixed" src="/assets/images/notImage.png"
+                    alt="">
+        {{else}}
+          <img class="media-object imgFixed" src="{{socialNetwork.image}}">
+        {{/if}}
+      </a>
+      <div class="media-body center">
+        {{!-- <a class="thumbnail pull-left min-left" href="#"> --}}
+          <a class="media-heading" href="{{socialNetwork.url}}">{{socialNetwork.url}}</a>
+        {{!-- </a> --}}
+        <p>
+          {{#if socialNetwork.following}}
+            <span class="label label-primary">{{socialNetwork.following}} following</span>
+          {{/if}}
+          {{#if socialNetwork.followers}}
+            <span class="label label-primary">{{socialNetwork.followers}} followers</span>
+          {{/if}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

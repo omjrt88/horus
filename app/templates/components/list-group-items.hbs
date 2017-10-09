@@ -1,0 +1,9 @@
+<div class="panel-heading"><h4>{{listName}}</h4></div>
+<div class="panel-body">
+  <div class="list-group">
+    {{#each items as |item|}}
+      <p class="list-group-item">{{item}}</p>
+    {{/each}}
+  </div>
+</div>
+{{yield}}

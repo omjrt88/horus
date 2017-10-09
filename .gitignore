@@ -15,3 +15,15 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+.DS_Store
+*.orig
+.idea
+*.swp
+*.rdb
+
+.vscode
+/.vscode
+
+yarn.lock
+jsconfig.json
+/typings

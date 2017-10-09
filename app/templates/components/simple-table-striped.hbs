@@ -1,0 +1,22 @@
+<div class="panel-heading"><h4>{{sectionName}}</h4></div>
+{{!-- <div class="panel-heading"><h4>Phones</h4></div> --}}
+<div class="panel-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        {{#each nameColumns as |column|}}
+          <th>{{humanize column.name}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data as |datum|}}
+        <tr>
+          {{#each nameColumns as |column|}} 
+            <td>{{get datum (concat column.path column.name)}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
