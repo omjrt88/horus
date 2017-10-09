@@ -1,11 +1,11 @@
 import StorageArray from 'ember-local-storage/local/array';
 
-const Storage = StorageArray.extend();
+const STORAGE = StorageArray.extend();
 
-Storage.reopenClass({
+STORAGE.reopenClass({
   initialState() {
     return [];
   }
 });
 
-export default Storage;
+export default STORAGE;

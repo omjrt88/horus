@@ -9,14 +9,17 @@ export default Controller.extend({
 	password: '',
 	actions: {
 		login() {
+			this.set('loginFailed', false);
 			let username = this.get('username');
       let password = this.get('password');
 			let sessionManager = this.get('sessionManager');
 			let isLogged = sessionManager.login(username,password);
-			this.set('loginFailed', isLogged);
-			if (isLogged) {
-				this.transitionToRoute('index');
+			if (!isLogged) {
+				this.set('loginFailed', true);
+				return;
 			}
+			this.set('loginFailed', false);
+			this.transitionToRoute('index');
 		}
 	}
 });
