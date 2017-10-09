@@ -119,6 +119,15 @@ body {
   text-align: center;
 }
 
+.limitedDropdown {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.savedReportsButtom {
+  width: 180px;
+}
+
 .card {
   max-height: 290px;
   min-height: 290px;

@@ -53,14 +53,14 @@ export default Service.extend({
   },
 
   saveReport(report) {
-    if (this.userInfo().reports.length === 0 || !this.userInfo().reports.mapBy('username').includes(report.username)) {
+    if (this.userInfo().reports.length === 0 || !this.userInfo().reports.mapBy('principalEmail').includes(report.get('principalEmail'))) {
       this.userInfo().reports.addObject(report);
       this.get('horusStorage')._save();
     }
   },
 
   getSavedReport(mail) {
-    if (this.userInfo().reports.length !== 0 || this.userInfo().reports.mapBy('username').includes(mail)) {
+    if (this.userInfo().reports.length !== 0 || this.userInfo().reports.mapBy('principalEmail').includes(mail)) {
       return this.userInfo().reports.findBy('username', mail);
     }
   }

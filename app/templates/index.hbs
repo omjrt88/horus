@@ -23,6 +23,16 @@
                   Results for <strong>{{currentReport.principalEmail}}</strong>.
               </div>
             {{/unless}}
+              <div class="dropdown {{if dropdownOpen 'open'}}">
+                <a href="#" class="btn btn-primary dropdown-toggle savedReportsButtom" data-toggle="dropdown" {{action 'toggleDropdown'}}>
+                  Last Reports Seen <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu limitedDropdown">
+                  {{#each lastReports as |report|}}
+                    <li><a href="#" {{action 'savedReportSelected' report}}>{{report}}</a></li>
+                  {{/each}}
+                </ul>
+              </div>
         </div>
     </div>
 
@@ -38,9 +48,7 @@
       </div>
       <div class="col-sm-4 col-xs-6">
         {{#unless nameListEmpty}}
-          <div class='panel panel-default heightFixed'>
-            {{simple-table-striped nameColumns=nameInfoColumns data=currentReport.names sectionName='Names' cssAdditionalClass=''}}
-          </div>
+          {{list-group-items listName='Full Names' items=nameList}}
         {{/unless}}
       </div>
       <div class="col-sm-4 col-xs-6">
