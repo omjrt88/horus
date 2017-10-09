@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import SpinnerMixin from 'horus/mixins/spinner-mixin';
 
 const { Controller, inject } = Ember;
 
-export default Controller.extend({
+export default Controller.extend(SpinnerMixin, {
   sessionManager: inject.service('session-manager'),
   routing: inject.service('-routing'),
 	name: '',
@@ -26,11 +27,13 @@ export default Controller.extend({
   },
 	actions: {
 		register() {
+      this.showSpinner();
       this.set('showErrorMsg', false);
 
       if (!this.passwordVerification()) {
         this.set('showErrorMsg', true);
         this.set('errorMsg', 'Password doesn`t match.');
+        this.hideSpinner();
         return;
       }
 
@@ -46,11 +49,13 @@ export default Controller.extend({
         this.clearFields();
 
         setTimeout(() => {
+          this.hideSpinner();
           this.get('routing').transitionTo('login');
         }, 3000);
       } else {
         this.set('showErrorMsg', true);
         this.set('errorMsg', 'User already exists.');
+        this.hideSpinner();
       }
     }
 	}

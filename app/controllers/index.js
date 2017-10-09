@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import SpinnerMixin from 'horus/mixins/spinner-mixin';
 
 const { Controller, inject, computed } = Ember;
 
-export default Controller.extend({
+export default Controller.extend(SpinnerMixin, {
   store: inject.service(),
   sessionManager: inject.service('session-manager'),
   searchTerm: '',
@@ -77,7 +78,9 @@ export default Controller.extend({
   },
   actions: {
     search() {
+      this.showSpinner();
       if (!this.searchIsValid()) {
+        this.hideSpinner();
         return;
       }
       let sessionManager = this.get('sessionManager');
@@ -87,6 +90,7 @@ export default Controller.extend({
         sessionManager.saveReport(userFinded);
         this.set('sessionManager.currentReport', userFinded);
         this.set('searchTerm', '');
+        this.hideSpinner();
       });
     },
     toggleDropdown() {

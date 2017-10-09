@@ -36,6 +36,7 @@
     "ember-cli-qunit": "^2.1.0",
     "ember-cli-release": "^0.2.9",
     "ember-cli-sass": "7.0.0",
+    "ember-cli-spinner": "0.0.9",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-string-helpers": "1.4.0",
     "ember-cli-test-loader": "^1.1.0",

@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
+import SpinnerMixin from 'horus/mixins/spinner-mixin';
 
 const { inject, Service } = Ember;
 
-export default Service.extend({
+export default Service.extend(SpinnerMixin, {
 	store: inject.service(),
   routing: inject.service('-routing'),
   horusStorage: storageFor('horus-storage'),
@@ -28,9 +29,11 @@ export default Service.extend({
   },
 
   logout(){
+    this.showSpinner();
     this.cookie.removeCookie('horusCookieUser');
     this.get('store').unloadAll('email');
     this.setProperties({currentReport: {}, isLogged: false});
+    this.hideSpinner();
     this.get('routing').transitionTo('login');
   },
 
