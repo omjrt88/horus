@@ -3,7 +3,7 @@ import DS from 'ember-data';
 const { RESTAdapter } = DS;
 
 export default RESTAdapter.extend({
-  host: 'http://www.beenverified.com/hk/dd/',
+  host: 'https://www.beenverified.com/hk/dd/',
   namespace: '',
 
   pathForType: function(modelName) {
